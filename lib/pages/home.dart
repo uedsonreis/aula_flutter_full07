@@ -1,15 +1,10 @@
 import 'package:aula_flutter_full07/models/planet.dart';
+import 'package:aula_flutter_full07/pages/planet_page.dart';
 import 'package:aula_flutter_full07/services/planet_service.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
 
   String formatOrder(int id) {
     String order = '${id}th';
@@ -47,6 +42,14 @@ class _HomePageState extends State<HomePage> {
                 formatOrder(planets[i].id),
                 textAlign: TextAlign.right,
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PlanetPage(planet: planets[i])
+                  ),
+                );
+              },
             ),
             const Divider(color: Colors.grey)
           ],
